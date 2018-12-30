@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/vnc-site
     docker:
-      - image: artsy/ruby:2.5.3-node-chrome
+      - image: artsy/ruby:2.6.0-node-chrome
 
     steps:
       - checkout
@@ -26,7 +26,7 @@ jobs:
   test:
     working_directory: ~/vnc-site
     docker:
-      - image: artsy/ruby:2.5.3-node-chrome
+      - image: artsy/ruby:2.6.0-node-chrome
 
     steps:
       - checkout
@@ -46,7 +46,7 @@ jobs:
   deploy:
     working_directory: ~/vnc-site
     docker:
-      - image: artsy/ruby:2.5.3-node-chrome
+      - image: artsy/ruby:2.6.0-node-chrome
 
     steps:
       - checkout
