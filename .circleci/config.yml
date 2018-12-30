@@ -49,6 +49,10 @@ jobs:
       - image: artsy/ruby:2.6.0-node-chrome
 
     steps:
+      - run:
+          name: Installing rsync
+          command: sudo apt install -y rsync
+
       - checkout
 
       - restore_cache:
