@@ -1,0 +1,79 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/vnc-site
+    docker:
+      - image: artsy/ruby:2.5.3-node-chrome
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restore bundler cache
+          key: bundler-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Bundle install
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          name: Save bundler cache
+          key: bundler-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+  test:
+    working_directory: ~/vnc-site
+    docker:
+      - image: artsy/ruby:2.5.3-node-chrome
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restore bundler cache
+          key: bundler-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Bundle install
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - run:
+          name: Run tests
+          command: bundle exec rake
+
+  deploy:
+    working_directory: ~/vnc-site
+    docker:
+      - image: artsy/ruby:2.5.3-node-chrome
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restore bundler cache
+          key: bundler-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Bundle install
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - run:
+          name: Deploying site
+          command: bundle exec rake deploy
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
