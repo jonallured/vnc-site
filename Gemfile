@@ -5,3 +5,4 @@ ruby '2.6.0'
 
 gem 'middleman'
 gem 'middleman-blog'
+gem 'rake'
