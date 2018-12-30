@@ -82,6 +82,7 @@ GEM
     parallel (1.12.1)
     public_suffix (3.0.3)
     rack (2.0.6)
+    rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -102,9 +103,10 @@ PLATFORMS
 DEPENDENCIES
   middleman
   middleman-blog
+  rake
 
 RUBY VERSION
    ruby 2.6.0p0
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
