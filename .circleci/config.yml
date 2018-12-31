@@ -53,6 +53,12 @@ jobs:
           name: Installing rsync
           command: apt-get update && apt-get install -y rsync
 
+      - add_ssh_keys
+
+      - run:
+          name: Scan server keys
+          command: touch ~/.ssh/known_hosts && ssh-keyscan www.verynicecode.biz >> ~/.ssh/known_hosts
+
       - checkout
 
       - restore_cache:
