@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-ruby '2.6.0'
-#ruby-gemset=vnc-site
+ruby File.read('.tool-versions').split[1]
 
-gem 'middleman'
+gem 'middleman', '4.3.7'
 gem 'middleman-blog'
 gem 'rake'
+gem 'rubocop'
