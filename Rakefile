@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new(:rubocop)
+
 desc 'Build Middleman site'
 task :build do
   exit 1 unless system 'bundle exec middleman build --clean'
@@ -10,4 +15,4 @@ task deploy: :build do
   exit 2 unless system "rsync -av -e ssh --delete build/ #{ENV['DEPLOY_TARGET']}"
 end
 
-task default: [:build]
+task default: %i[rubocop build]
