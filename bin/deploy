@@ -1,0 +1,8 @@
+#! /bin/bash
+
+if [ -z "$DEPLOY_TARGET" ]; then
+  echo "DEPLOY_TARGET is empty"
+  exit 1
+fi
+
+rsync -av -e ssh --delete build/ $DEPLOY_TARGET
