@@ -1,10 +1,13 @@
 version: 2
 
+global_defaults: &global_defaults
+  working_directory: ~/vnc-site
+  docker:
+    - image: artsy/ruby:2.7.1-node-chrome
+
 jobs:
   build:
-    working_directory: ~/vnc-site
-    docker:
-      - image: artsy/ruby:2.6.0-node-chrome
+    <<: *global_defaults
 
     steps:
       - checkout
@@ -24,9 +27,7 @@ jobs:
             - vendor/bundle
 
   test:
-    working_directory: ~/vnc-site
-    docker:
-      - image: artsy/ruby:2.6.0-node-chrome
+    <<: *global_defaults
 
     steps:
       - checkout
@@ -44,9 +45,7 @@ jobs:
           command: bundle exec rake
 
   deploy:
-    working_directory: ~/vnc-site
-    docker:
-      - image: artsy/ruby:2.6.0-node-chrome
+    <<: *global_defaults
 
     steps:
       - run:
@@ -86,4 +85,4 @@ workflows:
             - test
           filters:
             branches:
-              only: master
+              only: main
