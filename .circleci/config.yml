@@ -3,7 +3,7 @@ version: 2
 global_defaults: &global_defaults
   working_directory: ~/vnc-site
   docker:
-    - image: artsy/ruby:2.7.1-node-chrome
+    - image: circleci/ruby:2.7.2-node
 
 jobs:
   build:
