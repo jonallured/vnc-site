@@ -7,6 +7,7 @@ body {
 }
 
 header {
+  margin: 30px;
   text-align: center;
 }
 
@@ -14,27 +15,42 @@ h1 {
   color: #fef96f;
   font-family: "Titillium Web", sans-serif;
   text-shadow: 3px 3px #ed588d;
-  font-size: 200px;
+  font-size: 220px;
   line-height: 0.8em;
   margin: 0;
   padding: 0;
 }
 
 main {
-  margin: 0 auto;
-  width: 800px;
+  border-top: 10px solid white;
+  border-bottom: 10px solid white;
+  margin: 60px auto;
+  width: 600px;
 }
 
 main a {
+  text-decoration: none;
   color: white;
 }
 
+main a:hover {
+  text-decoration: underline;
+}
+
 section {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 22px;
+  line-height: 36px;
+  margin: 60px auto;
+  width: 520px;
 }
 
 footer {
+  font-size: 32px;
+  margin: 30px;
   text-align: center;
-  font-size: 40px;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
 }
