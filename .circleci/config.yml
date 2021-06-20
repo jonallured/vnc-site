@@ -3,7 +3,7 @@ jobs:
   default:
     working_directory: ~/vnc-site
     docker:
-      - image: circleci/ruby:2.7.2-node
+      - image: circleci/ruby:3.0.1-node
     steps:
       - checkout
       - restore_cache:
